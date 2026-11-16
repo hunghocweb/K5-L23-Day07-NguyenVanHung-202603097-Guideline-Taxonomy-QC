@@ -1,10 +1,10 @@
 # Thông tin nhóm
 
-- Tên nhóm:
-- Mã thành viên (ba chữ số):
-- Người điều phối:
-- Người review bản cuối:
-- Commit chốt bài (điền ở kênh nộp sau khi commit):
+- Tên nhóm: NguyenVanHung-202603097
+- Mã thành viên (ba chữ số): 101, 102, 103, 104
+- Người điều phối: 101
+- Người review bản cuối: 103
+- Người phụ trách commit chốt bài: 101
 
 ## Kết quả tóm tắt (điền cuối bài)
 

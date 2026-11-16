@@ -41,8 +41,9 @@ class WorkflowTest(unittest.TestCase):
                        [[name, "Fixture", "CC0", "https://example.com/" + name] for name in self.names])
 
     def run_script(self, name, *args, success=True):
+        # Match the UTF-8 decoder even when Windows uses a legacy code page.
         result = subprocess.run(
-            [sys.executable, str(self.root / "scripts" / (name + ".py")), *args],
+            [sys.executable, "-X", "utf8", str(self.root / "scripts" / (name + ".py")), *args],
             cwd=self.root, capture_output=True, text=True, encoding="utf-8",
         )
         output = result.stdout + result.stderr
@@ -113,10 +114,10 @@ class WorkflowTest(unittest.TestCase):
             {"id": 3, "image_id": 1, "category_id": 2, "bbox": [45, 0, 45, 80]},
         ])
         self.run_script("qc_compare")
-        summary = json.loads((self.qc / "iaa_summary.json").read_text())
+        summary = json.loads((self.qc / "iaa_summary.json").read_text(encoding="utf-8"))
         self.assertEqual(summary["overall"]["n_skipped_in_ignore"], 0)
         self.assertIn("bat_dong_ignore", summary["issues_by_type"])
-        self.assertEqual((self.qc / "flagged_images.txt").read_text().splitlines(), self.names[:1])
+        self.assertEqual((self.qc / "flagged_images.txt").read_text(encoding="utf-8").splitlines(), self.names[:1])
 
     def test_matched_ignore_regions_do_not_hide_asymmetric_coverage(self):
         self.assignments()
@@ -128,12 +129,12 @@ class WorkflowTest(unittest.TestCase):
         ])
         self.coco(self.sub / "labels" / "102.json", additional=[region])
         self.run_script("qc_compare")
-        summary = json.loads((self.qc / "iaa_summary.json").read_text())
+        summary = json.loads((self.qc / "iaa_summary.json").read_text(encoding="utf-8"))
         self.assertEqual(summary["overall"]["n_skipped_in_ignore"], 0)
         self.assertEqual(summary["overall"]["n_unmatched_a"], 1)
         self.assertIn("bat_dong_ignore", summary["issues_by_type"])
-        self.assertEqual((self.qc / "flagged_images.txt").read_text().splitlines(), self.names[:1])
-        draft = json.loads((self.qc / "consensus_draft.json").read_text())
+        self.assertEqual((self.qc / "flagged_images.txt").read_text(encoding="utf-8").splitlines(), self.names[:1])
+        draft = json.loads((self.qc / "consensus_draft.json").read_text(encoding="utf-8"))
         self.assertIn(obj["bbox"], [box["bbox"] for box in draft["annotations"]])
 
     def test_review_rejects_changed_calibration_snapshot(self):
@@ -156,7 +157,7 @@ class WorkflowTest(unittest.TestCase):
 
     def test_calibration_cannot_drop_legacy_class(self):
         self.compare()
-        new_schema = json.loads(self.tax.read_text())
+        new_schema = json.loads(self.tax.read_text(encoding="utf-8"))
         new_schema["version"] = "v1.1"
         new_schema["classes"][0]["name"] = "passenger_car"
         self.write_json(self.sub / "taxonomy_v1.1.json", new_schema)
@@ -222,20 +223,27 @@ class WorkflowTest(unittest.TestCase):
         self.write_csv(self.qc / "calibration_decisions.csv", self.decision_fields(), [decision])
         self.coco(self.prepare_export(), names=self.names[:1], bbox=[2, 1, 20, 60])
         self.run_script("build_final")
-        final = json.loads((self.qc / "labels_calibrated.json").read_text())
+        final = json.loads((self.qc / "labels_calibrated.json").read_text(encoding="utf-8"))
         self.assertEqual(final["annotations"][0]["bbox"][0], 2)
-        self.assertIn("2.0,1.0,20.0,60.0", (self.qc / "labels_calibrated.csv").read_text())
+        self.assertIn("2.0,1.0,20.0,60.0", (self.qc / "labels_calibrated.csv").read_text(encoding="utf-8"))
         self.assertIn("**HOLD**", self.run_script("qc_report"))
         self.assertEqual((first / "qc_result.json").read_bytes(), original_result)
         self.run_script("qc_sample", "--round", "2")
         self.review(round_number=2)
         self.assertIn("**RELEASE**", self.run_script("qc_report", "--round", "2"))
 
-    def test_assignment_rejects_unsafe_member_and_symlink_destination(self):
+    def test_assignment_rejects_unsafe_member(self):
         self.run_script("split_assign", "--members", "../data,102", "--copy-images", success=False)
+
+    def test_assignment_rejects_symlink_destination(self):
         output = self.root / "work"
         output.mkdir()
-        (output / "101").symlink_to(self.root / "data", target_is_directory=True)
+        try:
+            (output / "101").symlink_to(self.root / "data", target_is_directory=True)
+        except OSError as exc:
+            if getattr(exc, "winerror", None) == 1314:
+                self.skipTest("Creating symlinks requires Windows Developer Mode or administrator privileges")
+            raise
         self.run_script("split_assign", "--members", "101,102", "--copy-images", success=False)
         self.assertEqual(sorted(path.name for path in self.images.iterdir()), self.names)
 
@@ -328,7 +336,7 @@ class WorkflowTest(unittest.TestCase):
         self.assertIn("**HOLD**", self.run_script("qc_report"))
 
     def test_schema_rejects_invalid_default_and_changed_threshold(self):
-        data = json.loads(self.tax.read_text())
+        data = json.loads(self.tax.read_text(encoding="utf-8"))
         old_default = data["attributes"][0]["default"]
         data["attributes"][0]["default"] = "invalid"
         self.write_json(self.tax, data)
@@ -343,11 +351,11 @@ class WorkflowTest(unittest.TestCase):
         for member in ("101", "102"):
             path = self.sub / "labels" / f"{member}.json"
             self.coco(path)
-            data = json.loads(path.read_text())
+            data = json.loads(path.read_text(encoding="utf-8"))
             data["annotations"] = []
             self.write_json(path, data)
         self.run_script("qc_compare")
-        iaa = json.loads((self.qc / "iaa_summary.json").read_text())
+        iaa = json.loads((self.qc / "iaa_summary.json").read_text(encoding="utf-8"))
         self.assertIsNone(iaa["overall"]["pass"])
         self.assertEqual(iaa["coverage"], {"completed": 4, "assigned": 4})
 
@@ -356,7 +364,7 @@ class WorkflowTest(unittest.TestCase):
         self.run_script("qc_sample")
         self.review()
         labels = self.qc / "labels_calibrated.json"
-        data = json.loads(labels.read_text())
+        data = json.loads(labels.read_text(encoding="utf-8"))
         data["annotations"][0]["bbox"][0] += 1
         self.write_json(labels, data)
         self.assertIn("**HOLD**", self.run_script("qc_report"))
