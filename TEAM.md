@@ -5,6 +5,7 @@
 - Người điều phối: 101
 - Người review bản cuối: 103
 - Người phụ trách commit chốt bài: 101
+- Commit chốt bài (điền ở kênh nộp sau khi commit):
 
 ## Kết quả tóm tắt (điền cuối bài)
 

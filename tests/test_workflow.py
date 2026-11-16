@@ -1,5 +1,6 @@
 import csv
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -42,11 +43,12 @@ class WorkflowTest(unittest.TestCase):
 
     def run_script(self, name, *args, success=True):
         # Match the UTF-8 decoder even when Windows uses a legacy code page.
+        env = dict(os.environ, PYTHONUTF8="1", PYTHONIOENCODING="utf-8")
         result = subprocess.run(
             [sys.executable, "-X", "utf8", str(self.root / "scripts" / (name + ".py")), *args],
-            cwd=self.root, capture_output=True, text=True, encoding="utf-8",
+            cwd=self.root, capture_output=True, text=True, encoding="utf-8", errors="replace", env=env,
         )
-        output = result.stdout + result.stderr
+        output = (result.stdout or "") + (result.stderr or "")
         self.assertEqual(result.returncode == 0, success, output)
         return output
 
