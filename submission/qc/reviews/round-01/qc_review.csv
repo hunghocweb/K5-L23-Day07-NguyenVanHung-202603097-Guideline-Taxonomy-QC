@@ -1,0 +1,41 @@
+image,object_id,error_type,reviewer,rule_id,region,note
+img_001.jpg,6,sai_thuoc_tinh,101,R-07,,Lượt kiểm tra hỗ trợ theo ủy quyền 101; Xe tải bị mép phải ảnh cắt nhưng truncated=no; cần kiểm và đổi truncated=yes. Chờ xác nhận cuối của 103.
+img_002.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_003.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_004.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_005.jpg,66,sai_vi_tri_kich_thuoc,101,R-03,,"Lượt kiểm tra hỗ trợ theo ủy quyền 101; Box người đội mũ đen/khẩu trang hồng kết thúc trước phần áo vàng còn nhìn thấy phía dưới; cần sửa cực trị phần nhìn thấy, không bao người bên cạnh. Chờ xác nhận cuối của 103."
+img_006.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_007.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_008.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_009.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_010.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_011.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_012.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_013.jpg,202,thua,101,R-01/R-10,,"Lượt kiểm tra hỗ trợ theo ủy quyền 101; Box non_real_object đặt trên hình hươu trang trí; động vật không giống người/xe thuộc ngoài taxonomy, cần bỏ box này. Chờ xác nhận cuối của 103."
+img_014.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_015.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_016.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_017.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_018.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_019.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_020.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_021.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_022.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_023.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_024.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_025.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_026.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_027.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_028.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_029.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_030.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_031.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_032.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_033.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_034.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_035.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_036.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_037.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_038.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_039.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.
+img_040.jpg,,khong,101,,,Không phát hiện lỗi trong lượt kiểm tra hỗ trợ trên overlay; chưa thay xác nhận độc lập của 103.

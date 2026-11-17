@@ -21,9 +21,11 @@ def main() -> None:
     except (OSError, ValueError) as exc:
         die(str(exc))
     prior, tax, scope, batch = calibration_scope()
-    consensus = require_valid_labels(QC_DIR / "consensus_draft.json", prior)
-    if set(consensus.images) != batch:
-        die("Ảnh đồng thuận không khớp lô đã phân công.")
+    consensus = None
+    if batch - scope:
+        consensus = require_valid_labels(QC_DIR / "consensus_draft.json", prior)
+        if set(consensus.images) != batch:
+            die("Ảnh đồng thuận không khớp lô đã phân công.")
     corrected = None
     if scope:
         expected = calibration_export_path(scope)
