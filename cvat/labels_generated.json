@@ -1,6 +1,7 @@
 [
   {
     "name": "car",
+    "type": "any",
     "color": "#e6194b",
     "attributes": [
       {
@@ -38,6 +39,7 @@
   },
   {
     "name": "truck",
+    "type": "any",
     "color": "#3cb44b",
     "attributes": [
       {
@@ -75,6 +77,7 @@
   },
   {
     "name": "van",
+    "type": "any",
     "color": "#4363d8",
     "attributes": [
       {
@@ -112,6 +115,7 @@
   },
   {
     "name": "motorcycle",
+    "type": "any",
     "color": "#f58231",
     "attributes": [
       {
@@ -149,6 +153,7 @@
   },
   {
     "name": "person",
+    "type": "any",
     "color": "#911eb4",
     "attributes": [
       {
@@ -186,6 +191,7 @@
   },
   {
     "name": "bus",
+    "type": "any",
     "color": "#46c8c8",
     "attributes": [
       {
@@ -223,6 +229,7 @@
   },
   {
     "name": "tuk_tuk",
+    "type": "any",
     "color": "#f032e6",
     "attributes": [
       {
@@ -260,6 +267,7 @@
   },
   {
     "name": "pickup",
+    "type": "any",
     "color": "#9a6324",
     "attributes": [
       {
@@ -297,6 +305,7 @@
   },
   {
     "name": "bicycle",
+    "type": "any",
     "color": "#808000",
     "attributes": [
       {
@@ -334,6 +343,7 @@
   },
   {
     "name": "cyclo",
+    "type": "any",
     "color": "#008080",
     "attributes": [
       {
@@ -371,6 +381,7 @@
   },
   {
     "name": "three_wheeler",
+    "type": "any",
     "color": "#800000",
     "attributes": [
       {
@@ -408,6 +419,7 @@
   },
   {
     "name": "non_real_object",
+    "type": "any",
     "color": "#000075",
     "attributes": [
       {
@@ -445,6 +457,7 @@
   },
   {
     "name": "ignore_region",
+    "type": "any",
     "color": "#808080",
     "attributes": []
   }
