@@ -31,7 +31,11 @@ def main() -> None:
                     "mutable": False,
                     "input_type": a["type"],
                     "default_value": str(a.get("default", "")),
-                    "values": [str(v) for v in a.get("values", [])] if a["type"] == "select" else [],
+                    "values": (
+                        [str(v) for v in a.get("values", [])] if a["type"] == "select"
+                        else [str(a.get("default", "false"))] if a["type"] == "checkbox"
+                        else []
+                    ),
                 })
         labels.append({"name": name, "color": "#808080" if name == tax.ignore else COLORS[i % len(COLORS)],
                        "attributes": attrs})
